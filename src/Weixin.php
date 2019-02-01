@@ -3,6 +3,7 @@
 namespace Itidying\Weixin;
 
 use GuzzleHttp\Client;
+use Itidying\Weixin\Exceptions\InvalidArgumentException;
 
 class Weixin
 {
@@ -18,6 +19,10 @@ class Weixin
 
     public function getAccessToken(string $format = 'json')
     {
+        if (!in_array($format, ['json', 'array', 'object'])) {
+            throw new InvalidArgumentException('Invalid response format: ' . $format);
+        }
+
         $url = 'https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=' . $this->appid . '&secret=' . $this->appsecret;
 
         $res = $this->getClient()->get($url)->getBody()->getContents();
