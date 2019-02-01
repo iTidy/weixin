@@ -19,5 +19,12 @@
         "psr-4": {
             "Itidying\\Weixin\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Itidying\\Weixin\\ServiceProvider"
+            ]
+        }
     }
 }
