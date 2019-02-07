@@ -29,10 +29,10 @@ class Weixin
 
         // 存在echostr的情况，说明是一次接入
         if (isset($req['echostr']) && $signature == $req['signature']) {
-            return true;
+            return $req['echostr'];
         }
 
-        return false;
+        return 'success';
     }
 
     public function getAccessToken(string $format = 'json')
