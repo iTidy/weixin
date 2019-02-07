@@ -35,7 +35,7 @@ class Weixin
         return 'success';
     }
 
-    public function responseText(object $obj, string $content)
+    public function responseText($obj, string $content)
     {
         $toUser = $obj->FromUserName;
         $fromUser = $obj->ToUserName;
@@ -46,7 +46,7 @@ class Weixin
         echo $info;
     }
 
-    public function responseImageText(object $obj, array $articles)
+    public function responseImageText($obj, array $articles)
     {
         $toUser = $obj->FromUserName;
         $fromUser = $obj->ToUserName;
