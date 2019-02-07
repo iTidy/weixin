@@ -35,6 +35,17 @@ class Weixin
         return 'success';
     }
 
+    public function responseText(string $content)
+    {
+        $toUser = $obj->FromUserName;
+        $fromUser = $obj->ToUserName;
+        $time = time();
+        $msgType = 'text';
+        $template = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[%s]]></MsgType><Content><![CDATA[%s]]></Content></xml>";
+        $info = sprintf($template, $toUser, $fromUser, $time, $msgType, $content);
+        echo $info;
+    }
+
     public function getAccessToken(string $format = 'json')
     {
         if (!in_array($format, ['json', 'array', 'object'])) {
