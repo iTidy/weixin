@@ -17,11 +17,11 @@ class Weixin
         $this->appsecret = $appsecret;
     }
 
-    public function verify(array $req)
+    public function verify(array $req, string $token)
     {
         $param['timestamp'] = $req['timestamp'];
         $param['nonce'] = $req['nonce'];
-        $param['token'] = 'iTidying';
+        $param['token'] = $token;
 
         sort($param);
 
