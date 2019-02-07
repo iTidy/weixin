@@ -46,6 +46,21 @@ class Weixin
         echo $info;
     }
 
+    public function responseImageText(object $obj, array $articles)
+    {
+        $toUser = $obj->FromUserName;
+        $fromUser = $obj->ToUserName;
+        $time = time();
+        $msgType = 'news';
+        $template = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[%s]]></MsgType><ArticleCount>" . count($articles) . "</ArticleCount><Articles>";
+        foreach ($articles as $article) {
+            $template .= "<item><Title><![CDATA[" . $article['title'] . "]]></Title><Description><![CDATA[" . $article['desc'] . "]]></Description><PicUrl><![CDATA[" . $article['src'] . "]]></PicUrl><Url><![CDATA[" . $article['url'] . "]]></Url></item>";
+        }
+        $template .= "</Articles></xml>";
+        $info = sprintf($template, $toUser, $fromUser, $time, $msgType);
+        echo $info;
+    }
+
     public function getAccessToken(string $format = 'json')
     {
         if (!in_array($format, ['json', 'array', 'object'])) {
