@@ -87,6 +87,13 @@ class Weixin
         return $response;
     }
 
+    public function getIp(string $token)
+    {
+        $url = 'https://api.weixin.qq.com/cgi-bin/getcallbackip?access_token=' . $token;
+
+        return $this->getClient()->get($url)->getBody()->getContents();
+    }
+
     public function getClient()
     {
         return new Client($this->guzzleOptions);
