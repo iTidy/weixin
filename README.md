@@ -15,8 +15,8 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Itidying\Weixin\Weixin;
 
-$appid = 'wx6ffae9e5537ff8d1';
-$appsecret = '02a39e6833eb7faad41d8015bd401bb6';
+$appid = 'xxxxxxxxxx';
+$appsecret = 'xxxxxxxxxx';
 
 $wx = new Weixin($appid, $appsecret);
 
